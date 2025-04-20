@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MenuCuenta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+</head>
+
+<body>
+    <!-- ----------------------------- Barra de Navegacion ------------------- -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid ">
+            <a class="nav-link" href="./Menu.html">
+                <h1 class="navbar-brand">MyApp</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav ">
+                    <a class="nav-link active" id="aMiCuenta" aria-current="page" href="./MenuCuenta.html">Mi cuenta</a>
+                    <a class="nav-link" id="aHabitos" href="./MenuHabitos.html">Habitos</a>
+                    <a class="nav-link" id="aSeguimiento" href="./MenuSeguimiento.html">Seguimiento</a>
+                    <a class="nav-link" id="aConsultas" href="./MenuConsultas.html">Consultas</a>
+                    <a class="nav-link" id="aCerrarSesion" href="./Login.html">Cerrar sesion</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ----------------------------- Cards ------------------- -->
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" id="aConsultarCuenta" aria-current="true" href="#">Consultar cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="aModificarCuenta" href="#">Modificar cuenta</a>
+                </li>
+                <li class="nav-item">
+
+                    <a class="nav-link" id="aEliminarCuenta" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        href="#">Eliminar
+                        cuenta</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="card-body">
+            <!-- ----------------------------- Card Consultar Cuenta ------------------- -->
+            <div class="container" id="consultar-cuenta" style="display: none;">
+                <h5 class="card-title">Informacion de tu cuenta</h5>
+                <div class="form-floating mb-3">
+                    <input type="text" readonly class="form-control-plaintext" id="nombre">
+                    <label for="floatingPlaintextInput">Nombre:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" readonly class="form-control-plaintext" id="apellido">
+                    <label for="floatingPlaintextInput">Apellido:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" readonly class="form-control-plaintext" id="correo">
+                    <label for="floatingPlaintextInput">Correo:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" readonly class="form-control-plaintext" id="contraseña">
+                    <label for="floatingPlaintextInput">Contraseña:</label>
+                </div>
+
+            </div>
+
+            <!-- ----------------------------- Card Modificar Cuenta ------------------- -->
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="py-5" id="form" style="min-width: 400px; max-width: 50%;">
+                    <div class="container text-left" id="modificar-cuenta" style="min-width: 400px; display: none;">
+
+                        <h5 class="card-title">Modificar cuenta</h5>
+                        <form id="Modificar-cuenta" style="text-align: left;">
+
+                            <div class="container">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Nombre:</label>
+                                    <input type="text" id="nombreMod" class="form-control" name="nombreMod">
+                                    <h6 id="verif-nombre" style="display: none; color: red;"> *Campo obligatorio
+                                    </h6>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Apellido:</label>
+                                    <input type="text" class="form-control" id="apellidoMod" name="apellido">
+                                    <h6 id="verif-apellido" style="display: none; color: red;">*Campo obligatorio
+                                    </h6>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Contraseña:
+                                    </label>
+                                    <input type="password" class="form-control" id="contraseña1" name="contraseña1">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Confirmar
+                                        contraseña:
+                                    </label>
+                                    <input type="password" class="form-control" id="contraseña2" name="contraseña2">
+                                    <h6 id="verif-contraseñas" style="display: none; color: red;">Las constraseñas deben
+                                        ser
+                                        iguales
+                                    </h6>
+                                </div>
+
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary" style="margin-top: 20px;"
+                                        id="modificar-btn">Modificar</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- ----------------------- Card Eliminar cuenta -------------------------- -->
+            <div class="container" id="Eliminar-cuenta">
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Eliminar cuenta
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>¿Esta seguro que desea eliminar su cuenta?</h6>
+                                <p>Se perdera toda la informacion que haya ingresado y no podra recuperarla de
+                                    nuevo</p>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" id="btn-eliminar">Eliminar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <script src="./js/ViewsGenerales.js"></script>
+    <script src="./js/MenuUsuarioViews.js"></script>
+    <script src="./js/APIsUsuario.js"></script>
+</body>
+
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MenuHabitos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+</head>
+
+<body>
+    <!-- ----------------------------- Barra de Navegacion ------------------- -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container-fluid ">
+            <a class="nav-link" href="./Menu.html">
+                <h1 class="navbar-brand">MyApp</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" id="aMiCuenta" aria-current="page" href="./MenuCuenta.html">Mi cuenta</a>
+                    <a class="nav-link active" id="aHabitos" href="./MenuHabitos.html">Habitos</a>
+                    <a class="nav-link" id="aSeguimiento" href="./MenuSeguimiento.html">Seguimiento</a>
+                    <a class="nav-link" id="aConsultas" href="./MenuConsultas.html">Consultas</a>
+                    <a class="nav-link" id="aCerrarSesion" href="./Login.html">Cerrar sesion</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ----------------------------- Cards ------------------- -->
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="aAñadirHabito" href="#">Añadir Habito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="aConsultarHabito" aria-current="true" href="#">Consultar habitos</a>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="card-body text-start ">
+            <!-- ----------------------------- Card Añadir Cuenta ------------------- -->
+            <div class="container" id="agregar" style="display: block;">
+                <h3 class="card-title py-5">Agregar nuevo habito:</h3>
+                <form id="Modificar-cuenta" style="text-align: left;">
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nombreHabito" placeholder="">
+                        <label for="floatingInput">Escribe tu nuevo habito...</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="categoriaHabito" placeholder="name@example.com">
+                        <label for="floatingInput">Categoria:</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="descripcionHabito"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Descripcion:</label>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 20px;"
+                            id="btn-guardar-habito">Guardar</button>
+                    </div>
+
+                </form>
+                <div class="alert alert-success alert-dismissible fade show" role="alert"
+                    style="text-align: center; display: none;" id="alertaExito">
+                    <strong>Registro Exitoso!</strong> Podras consultar tus habitos en la seccion de consultar habitos
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+
+
+            <!-- ----------------------------- Card Consultar HAbitos ------------------- -->
+            <div class="container" id="consultar" style="display: none;">
+                <h3 class="card-title py-5">Consultar</h3>
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <!-- Aqui se van a agregar los habitos -->
+                    <table class="table table-hover">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Descripcion</th>
+                            </tr>
+                        </thead>
+                        <tbody id="habitos-container" style="text-align: center;">
+                            <!-- Aqui se van a agregar los habitos Dinamicamente-->
+
+                        </tbody>
+                    </table>
+                    <h6>Seleccione un habito para actualizarlo o eliminarlo</h6>
+                    <div></div>
+
+
+                    <div class="card card-body" style="text-align: center; display: none;" id="habitoSeleccionado">
+                        <div>
+                            <button type=" button" class="btn btn-primary" id="modificarView">
+                                Modificar</button>
+                            <button type="button" class="btn btn-danger" id="verifEliminarHabitoById"
+                                href="">Eliminar</button>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                            style="text-align: center; display: none;" id="alertaFracaso">
+                            <strong>Primero debes seleccionar un habito!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ----------------------------- Card Modificar Cuenta ------------------- -->
+            <div class="container text-start" id="modificar" style="display: none;">
+                <h3 class="py-5">Modificar</h3>
+                <form id="Modificar-cuenta" style="text-align: left;">
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nombreHabitoMod" placeholder="">
+                        <label for="floatingInput">Modifica tu habito...</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="categoriaHabitoMod" placeholder="name@example.com">
+                        <label for="floatingInput">Modifica la Categoria:</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="descripcionHabitoMod"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Modifica la Descripcion:</label>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 20px;"
+                            id="btn-modificar-habito">Actualizar Habito</button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- ----------------------- Card Eliminar cuenta -------------------------- -->
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content" id="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Habito
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>¿Esta seguro que desea eliminar su habito?</h6>
+                            <p>Se perdera toda la informacion que haya ingresado y no podra recuperarla de
+                                nuevo</p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="btn-eliminar-habito">Aceptar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <script src="./js/ViewsGenerales.js"></script>
+    <script src="./js/MenuHabitoViews.js"></script>
+    <script src="./js/APIsHabitos.js"></script>
+
+</body>
+
+
+</html>
