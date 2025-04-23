@@ -1,0 +1,1 @@
+Su propósito es el diseño de la interfaz de una aplicación web utilizando HTML, CSS y Bootstrap. También contiene la lógica a las conexiones de las APIs RESTful mediante JavaScript y la creación de elementos HTML para una visualización dinámica de la información
